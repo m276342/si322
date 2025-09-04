@@ -2,9 +2,13 @@
 
 from socket import *
 
-server_name = 'cosmo'
-server_port = 1337
+PORT = 1337
 
-client_socket = socket(AF_INET, SOCK_STREAM)
+server_socket = socket(AF_INET, SOCK_STREAM)
+server_socket.bind(("", PORT))
+server_socket.listen(1)
 
+print("[*] Server is listening...")
 
+while True:
+    connection_socket, address = server_socket.accept()
