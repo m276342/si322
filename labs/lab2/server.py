@@ -12,3 +12,8 @@ print("[*] Server is listening...")
 
 while True:
     connection_socket, address = server_socket.accept()
+    sentence = connection_socket.recv(1024).decode("utf-8")
+    capitilized_sentence = sentence.upper()
+    connection_socket.send(capitilized_sentence.encode("utf-8"))
+    connection_socket.close()
+
